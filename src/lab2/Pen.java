@@ -18,13 +18,11 @@ public class Pen {
         this.canvas = canvas;
     }
 
-    public void drawPixel(double x, double y) {
-        gc.strokeLine(x, y, x, y);
-    }
+    public void setColor(Color color) { this.color = color; gc.setStroke(color); }
 
-    public void drawLine(Point p1, Point p2){
-        drawLine(p1.getX(), p1.getY(), p2.getX(), p2.getY());
-    }
+    public void drawPixel(double x, double y) { gc.strokeLine(x, y, x, y); }
+
+    public void drawLine(Point p1, Point p2){ drawLine(p1.getX(), p1.getY(), p2.getX(), p2.getY()); }
 
     public void drawLine(double x1, double y1, double x2, double y2){
         x1 = toScreenX(x1); y1 = toScreenY(y1);
@@ -72,8 +70,6 @@ public class Pen {
         gc.strokeLine(toScreenX(0),toScreenY(maxY),toScreenX(0),toScreenY(minY));
         gc.setStroke(color);
     }
-
-    public void setColor(Color color) { this.color = color; gc.setStroke(color); }
 
     private int toScreenX(double x) { return (int) (canvas.getWidth() * (x - minX) / (maxX - minX)); }
     private int toScreenY(double y) { return (int) (canvas.getHeight() * (1 - (y - minY) / (maxY - minY))); }

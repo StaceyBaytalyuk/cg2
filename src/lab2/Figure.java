@@ -48,9 +48,9 @@ public class Figure {
         double y = center.getY();
         center.setY(y+dy);
     }
+
     public void zoom(double n) { scale *= n; }
     public void rotate(int deg) { angle += deg; }
-
 
     private void calculatePoints() {
         double deg = angle*(Math.PI/180);
@@ -188,7 +188,5 @@ public class Figure {
         y = 8 * scale * sin + -8 * scale * cos;
         number[8].setX(x + x0);
         number[8].setY(y + y0);
-
     }
-
 }
